@@ -9,14 +9,19 @@ let SearchScreen = () => {
 
     let handleTextChange = (text) => {
         setSearchText(text)
+        handleMovieSearch(text)
     }
 
-    let handleMovieSearch = () => {
-        axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&s=${searchText}`)
+    let handleMovieSearch = (searchText) => {
+        axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&s=${searchText}&page=1`)
         .then(res => {
-            console.log(res.data)
+            console.log(res.data.Search)
+            setMovies(res.data.Search)
         })
     }
+
+
+
     return(
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.searchContainer}>
@@ -27,7 +32,7 @@ let SearchScreen = () => {
                     placeholder='Search...'
                     placeholderTextColor='white'
                 />
-                <Button title='search' onPress={handleMovieSearch}/>
+                {movies ? movies.map(movie => <Text style={styles.text}>{movie.Title}</Text>) : null}
             </View>
         </TouchableWithoutFeedback>
     )
@@ -41,14 +46,14 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         backgroundColor: '#272727',
     },
-    searchText:{
+    text:{
         color: '#fff'
     },
     textInput: {
         height: 40,
         width: 200,
         borderColor: 'white',
-        borderWidth: 1,
+        borderBottomWidth: 1,
         color: '#fff',
         fontSize: 20,
         paddingHorizontal: 8,

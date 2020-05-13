@@ -1,12 +1,21 @@
 import React, { useState } from 'react'
-import { View, TextInput, Text, StyleSheet, TouchableWithoutFeedback, Keyboard   } from 'react-native'
+import { Button, View, TextInput, Text, StyleSheet, TouchableWithoutFeedback, Keyboard   } from 'react-native'
 import Constants from 'expo-constants';
+import axios from 'axios'
 
 let SearchScreen = () => {
     const [searchText, setSearchText] = useState('')
+    const [movies, setMovies] = useState([])
 
     let handleTextChange = (text) => {
         setSearchText(text)
+    }
+
+    let handleMovieSearch = () => {
+        axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&s=${searchText}`)
+        .then(res => {
+            console.log(res.data)
+        })
     }
     return(
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -18,6 +27,7 @@ let SearchScreen = () => {
                     placeholder='Search...'
                     placeholderTextColor='white'
                 />
+                <Button title='search' onPress={handleMovieSearch}/>
             </View>
         </TouchableWithoutFeedback>
     )

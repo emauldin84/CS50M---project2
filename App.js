@@ -1,68 +1,48 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
-import axios from 'axios'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import SearchScreen from './screens/SearchScreen'
-import ItemScreen from './screens/ItemScreen'
+import HomeStack from './stacks/HomeStack'
+import SettingsScreen from './screens/SettingsScreen'
 
-
-
-const Stack = createStackNavigator()
+const Tab = createBottomTabNavigator();
 
 let App = () => {
-  const [movies, setMovies] = useState([])
-  const [selectedMovie, setSelectedMovie] = useState({})
-  const [showLoader, setShowLoader] = useState(false)
-  
-  let handleMovieSearch = (searchText) => {
-    axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&s=${searchText}&plot=short&page=1`)
-    .then(res => {
-        setMovies(res.data.Search)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Search'>
-          <Stack.Screen name="Search"
-          options={{
-            headerStyle: {
+        <Tab.Navigator
+          tabBarOptions={{
+            activeTintColor: '#fff',
+            inactiveTintColor: '#666',
+            tabStyle: {
               backgroundColor: '#333',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            }
-            }}
-          >
-            {props => <SearchScreen 
-              {...props} 
-              setMovies={setMovies}
-              setSelectedMovie={setSelectedMovie} 
-              handleMovieSearch={handleMovieSearch} 
-              movies={movies} 
-              setShowLoader={setShowLoader}/>
-              }
-          </Stack.Screen>
-          <Stack.Screen name="Item"
-            options={{
-              title: selectedMovie.Title,
-              headerStyle: {
-                backgroundColor: '#333',
+              flex: 1,
               },
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
+          }}
+        >
+          <Tab.Screen 
+            name="Home" 
+            component={HomeStack} 
+            options={{
+              tabBarLabel: 'Search',
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name='ios-home' size={size} color={color} />
+              )
             }}
-            >
-            {props => <ItemScreen {...props} selectedMovie={selectedMovie} showLoader={showLoader}/>}
-          </Stack.Screen>
-        </Stack.Navigator>
+          />
+          <Tab.Screen 
+            name="Settings" 
+            component={SettingsScreen} 
+            options={{
+              tabBarLabel: 'Settings',
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name='ios-settings' size={size} color={color} />
+              )
+            }}
+          />
+        </Tab.Navigator>
       </NavigationContainer>
     );
   }

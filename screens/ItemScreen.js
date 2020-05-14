@@ -1,15 +1,12 @@
 import React from 'react'
 import { Image, View, Text, StyleSheet, ScrollView, ActivityIndicator} from 'react-native'
-import Constants from 'expo-constants';
-
-import ItemList from '../components/ItemList'
 
 let ItemScreen = ({selectedMovie, showLoader}) => {
     console.log(selectedMovie)
 
     return(
             showLoader ? 
-            <View style={styles.loaderContainer}>
+            <View style={{...styles.container, ...styles.loaderContainer}}>
                 <ActivityIndicator size="large" color="#fff" />
             </View>
                 :
@@ -41,9 +38,6 @@ const styles = StyleSheet.create({
         padding: 10
     },
     loaderContainer: {
-        flex: 1,
-        backgroundColor: '#272727',
-        padding: 10,
         justifyContent: 'center',
         alignItems: 'center'
     },

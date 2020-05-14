@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 
-let Item = ({itemDetails, setSelectedMovie, navigation, setSearchText, setShowLoader}) => {
+let Item = ({itemDetails, setSelectedMovie, navigation, setSearchText, setShowLoader, setMovies}) => {
     console.log(itemDetails)
     const handleMovieSelect = () => {
         setShowLoader(true)

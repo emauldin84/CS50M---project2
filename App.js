@@ -31,6 +31,7 @@ let App = () => {
           <Stack.Screen name="Search">
             {props => <SearchScreen 
               {...props} 
+              setMovies={setMovies}
               setSelectedMovie={setSelectedMovie} 
               handleMovieSearch={handleMovieSearch} 
               movies={movies} 

@@ -12,18 +12,25 @@ let SearchScreen = (props) => {
         props.handleMovieSearch(text)
     }
 
-
+    let handleClearText = () => {
+        setSearchText('')
+        props.setMovies([])
+    }
 
     return(
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.searchContainer}>
-                <TextInput 
-                    style={styles.textInput} 
-                    onChangeText={text => handleTextChange(text)} 
-                    value={searchText}
-                    placeholder='Search...'
-                    placeholderTextColor='white'
-                />
+                <View>
+                    <TextInput 
+                        style={styles.textInput} 
+                        onChangeText={text => handleTextChange(text)} 
+                        value={searchText}
+                        placeholder='Search OMDB'
+                        placeholderTextColor='white'
+                    />
+                    {searchText.length > 0 ? <Text onPress={handleClearText}>clear</Text> : null}
+
+                </View>
                 <ItemList movies={props.movies} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} setSearchText={setSearchText} setShowLoader={props.setShowLoader}/>
             </View>
         </TouchableWithoutFeedback>

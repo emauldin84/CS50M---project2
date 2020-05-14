@@ -6,12 +6,13 @@ import Item from './Item'
 
 
 let ItemList = (props) => {
+
     return(
         <TouchableWithoutFeedback>
             <SafeAreaView style={styles.container}>
                 <FlatList
                     data={props.movies}
-                    renderItem={({item}) => <Item itemDetails={item}/>}
+                    renderItem={({item}) => <Item itemDetails={item} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} setSearchText={props.setSearchText}/>}
                     keyExtractor={item => item.imdbID}
                 />
 

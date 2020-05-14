@@ -1,25 +1,15 @@
 import React, { useState } from 'react'
 import { View, TextInput, Text, StyleSheet, TouchableWithoutFeedback, Keyboard   } from 'react-native'
 import Constants from 'expo-constants';
-import axios from 'axios'
 
 import ItemList from '../components/ItemList'
 
-let SearchScreen = () => {
+let SearchScreen = (props) => {
     const [searchText, setSearchText] = useState('')
-    const [movies, setMovies] = useState([])
 
     let handleTextChange = (text) => {
         setSearchText(text)
-        handleMovieSearch(text)
-    }
-
-    let handleMovieSearch = (searchText) => {
-        axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&s=${searchText}&plot=short&page=1`)
-        .then(res => {
-            // console.log(res.data)
-            setMovies(res.data.Search)
-        })
+        props.handleMovieSearch(text)
     }
 
 
@@ -34,7 +24,7 @@ let SearchScreen = () => {
                     placeholder='Search...'
                     placeholderTextColor='white'
                 />
-                <ItemList movies={movies}/>
+                <ItemList movies={props.movies} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} setSearchText={setSearchText}/>
             </View>
         </TouchableWithoutFeedback>
     )
@@ -66,5 +56,3 @@ const styles = StyleSheet.create({
 export default SearchScreen
 
 
-
-// `http://www.omdbapi.com/?apikey=48ba5f31&t=${searchText}&plot=short&page=1`

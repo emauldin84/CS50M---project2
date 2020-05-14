@@ -1,12 +1,26 @@
 import React from 'react'
 import { Image ,StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import axios from 'axios'
 
 
 
-let Item = ({itemDetails}) => {
-    console.log(itemDetails)
+let Item = ({itemDetails, setSelectedMovie, navigation, setSearchText}) => {
+    const handleMovieSelect = () => {
+        axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&t=${itemDetails.Title}&plot=short&page=1`)
+        .then(res => {
+            console.log('DATA', res.data)
+            setSelectedMovie(res.data)
+        })
+        .then(() => {
+            navigation.navigate('Item')
+            setSearchText('')
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
     return(
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={handleMovieSelect}>
             <Image source={{uri: itemDetails.Poster}} style={styles.image}/>
             <View style={styles.textContainer}>
                 <Text style={styles.text}>{itemDetails.Title}</Text>

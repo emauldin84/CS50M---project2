@@ -19,8 +19,8 @@ let SearchScreen = (props) => {
 
     return(
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style={styles.searchContainer}>
-                <View>
+            <View style={styles.container}>
+                <View style={styles.searchContainer}>
                     <TextInput 
                         style={styles.textInput} 
                         onChangeText={text => handleTextChange(text)} 
@@ -28,7 +28,7 @@ let SearchScreen = (props) => {
                         placeholder='Search OMDB'
                         placeholderTextColor='white'
                     />
-                    {searchText.length > 0 ? <Text onPress={handleClearText}>clear</Text> : null}
+                    {searchText.length > 0 ? <Text style={{...styles.clear, ...styles.text}} onPress={handleClearText}>clear</Text> : null}
 
                 </View>
                 <ItemList movies={props.movies} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} setSearchText={setSearchText} setShowLoader={props.setShowLoader}/>
@@ -38,15 +38,22 @@ let SearchScreen = (props) => {
 }
 
 const styles = StyleSheet.create({
-    searchContainer: {
+    container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop: 20,
         backgroundColor: '#272727',
     },
+    searchContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
     text:{
         color: '#fff'
+    },
+    clear: {
+        marginLeft: -32
     },
     textInput: {
         height: 40,

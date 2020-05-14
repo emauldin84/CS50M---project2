@@ -12,7 +12,6 @@ let Item = ({itemDetails, setSelectedMovie, navigation, setSearchText, setShowLo
         axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&i=${itemDetails.imdbID}&plot=short&page=1`)
         .then(res => {
             setSelectedMovie(res.data)
-            setSearchText('')
         })
         .then(() => {
             setShowLoader(false)

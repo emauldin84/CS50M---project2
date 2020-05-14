@@ -5,8 +5,9 @@ import axios from 'axios'
 
 
 let Item = ({itemDetails, setSelectedMovie, navigation, setSearchText}) => {
+    console.log(itemDetails)
     const handleMovieSelect = () => {
-        axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&t=${itemDetails.Title}&plot=short&page=1`)
+        axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&i=${itemDetails.imdbID}&plot=short&page=1`)
         .then(res => {
             console.log('DATA', res.data)
             setSelectedMovie(res.data)

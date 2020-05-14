@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
     },
     plot: {
         fontStyle: 'italic'
-    }
+    },
+        
 })
 
 export default ItemScreen

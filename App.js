@@ -28,16 +28,38 @@ let App = () => {
     return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName='Search'>
-          <Stack.Screen name="Search">
+          <Stack.Screen name="Search"
+          options={{
+            headerStyle: {
+              backgroundColor: '#272727',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            }
+            }}
+          >
             {props => <SearchScreen 
               {...props} 
               setMovies={setMovies}
               setSelectedMovie={setSelectedMovie} 
               handleMovieSearch={handleMovieSearch} 
               movies={movies} 
-              setShowLoader={setShowLoader}/>}
+              setShowLoader={setShowLoader}/>
+              }
           </Stack.Screen>
-          <Stack.Screen name="Item">
+          <Stack.Screen name="Item"
+            options={{
+              title: selectedMovie.Title,
+              headerStyle: {
+                backgroundColor: '#272727',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              }
+            }}
+            >
             {props => <ItemScreen {...props} selectedMovie={selectedMovie} showLoader={showLoader}/>}
           </Stack.Screen>
         </Stack.Navigator>

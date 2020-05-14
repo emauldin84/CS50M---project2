@@ -24,7 +24,7 @@ let SearchScreen = (props) => {
                     placeholder='Search...'
                     placeholderTextColor='white'
                 />
-                <ItemList movies={props.movies} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} setSearchText={setSearchText}/>
+                <ItemList movies={props.movies} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} setSearchText={setSearchText} setShowLoader={props.setShowLoader}/>
             </View>
         </TouchableWithoutFeedback>
     )

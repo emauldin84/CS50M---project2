@@ -4,17 +4,19 @@ import axios from 'axios'
 
 
 
-let Item = ({itemDetails, setSelectedMovie, navigation, setSearchText}) => {
+let Item = ({itemDetails, setSelectedMovie, navigation, setSearchText, setShowLoader}) => {
     console.log(itemDetails)
     const handleMovieSelect = () => {
+        setShowLoader(true)
+        navigation.navigate('Item')
         axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&i=${itemDetails.imdbID}&plot=short&page=1`)
         .then(res => {
-            console.log('DATA', res.data)
             setSelectedMovie(res.data)
+            setSearchText('')
         })
         .then(() => {
-            navigation.navigate('Item')
-            setSearchText('')
+            setShowLoader(false)
+            
         })
         .catch(err => {
             console.log(err)

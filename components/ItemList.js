@@ -12,7 +12,7 @@ let ItemList = (props) => {
             <SafeAreaView style={styles.container}>
                 <FlatList
                     data={props.movies}
-                    renderItem={({item}) => <Item itemDetails={item} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} setSearchText={props.setSearchText}/>}
+                    renderItem={({item}) => <Item itemDetails={item} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} setSearchText={props.setSearchText} setShowLoader={props.setShowLoader}/>}
                     keyExtractor={item => item.imdbID}
                 />
 

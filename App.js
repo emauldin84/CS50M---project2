@@ -14,6 +14,7 @@ const Stack = createStackNavigator()
 let App = () => {
   const [movies, setMovies] = useState([])
   const [selectedMovie, setSelectedMovie] = useState({})
+  const [showLoader, setShowLoader] = useState(false)
   
   let handleMovieSearch = (searchText) => {
     axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&s=${searchText}&plot=short&page=1`)
@@ -28,10 +29,15 @@ let App = () => {
       <NavigationContainer>
         <Stack.Navigator initialRouteName='Search'>
           <Stack.Screen name="Search">
-            {props => <SearchScreen {...props} setSelectedMovie={setSelectedMovie} handleMovieSearch={handleMovieSearch} movies={movies}/>}
+            {props => <SearchScreen 
+              {...props} 
+              setSelectedMovie={setSelectedMovie} 
+              handleMovieSearch={handleMovieSearch} 
+              movies={movies} 
+              setShowLoader={setShowLoader}/>}
           </Stack.Screen>
           <Stack.Screen name="Item">
-            {props => <ItemScreen {...props} selectedMovie={selectedMovie}/>}
+            {props => <ItemScreen {...props} selectedMovie={selectedMovie} showLoader={showLoader}/>}
           </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>

@@ -1,15 +1,19 @@
 import React from 'react'
-import { Image, View, Text, StyleSheet, ScrollView} from 'react-native'
+import { Image, View, Text, StyleSheet, ScrollView, ActivityIndicator} from 'react-native'
 import Constants from 'expo-constants';
 
 import ItemList from '../components/ItemList'
 
-let ItemScreen = ({selectedMovie}) => {
+let ItemScreen = ({selectedMovie, showLoader}) => {
     console.log(selectedMovie)
 
     return(
-        // <ScrollView style={styles.container}>
-            <View style={styles.container}>
+            showLoader ? 
+            <View style={styles.loaderContainer}>
+                <ActivityIndicator size="large" color="#fff" />
+            </View>
+                :
+                <View style={styles.container}>
                 <Image source={{uri: selectedMovie.Poster}} style={styles.image} resizeMode='contain'/>
                 <View style={styles.grouped}>
                     <Text style={{...styles.text, ...styles.title}}>{selectedMovie.Title}</Text>
@@ -27,7 +31,6 @@ let ItemScreen = ({selectedMovie}) => {
                     <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Ratings[0].Value}</Text>
                 </View>
             </View>
-        // </ScrollView>
     )
 }
 
@@ -37,9 +40,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#272727',
         padding: 10
     },
+    loaderContainer: {
+        flex: 1,
+        backgroundColor: '#272727',
+        padding: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     text:{
         color: '#fff',
-        // textAlign: 'center',
     },
     grouped:{
         flexDirection: 'row',

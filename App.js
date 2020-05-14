@@ -31,7 +31,7 @@ let App = () => {
           <Stack.Screen name="Search"
           options={{
             headerStyle: {
-              backgroundColor: '#272727',
+              backgroundColor: '#333',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -52,7 +52,7 @@ let App = () => {
             options={{
               title: selectedMovie.Title,
               headerStyle: {
-                backgroundColor: '#272727',
+                backgroundColor: '#333',
               },
               headerTintColor: '#fff',
               headerTitleStyle: {

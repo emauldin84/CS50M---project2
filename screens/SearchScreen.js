@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import { Button, View, TextInput, Text, StyleSheet, TouchableWithoutFeedback, Keyboard   } from 'react-native'
+import { View, TextInput, Text, StyleSheet, TouchableWithoutFeedback, Keyboard   } from 'react-native'
 import Constants from 'expo-constants';
 import axios from 'axios'
+
+import ItemList from '../components/ItemList'
 
 let SearchScreen = () => {
     const [searchText, setSearchText] = useState('')
@@ -13,9 +15,9 @@ let SearchScreen = () => {
     }
 
     let handleMovieSearch = (searchText) => {
-        axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&s=${searchText}&page=1`)
+        axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&s=${searchText}&plot=short&page=1`)
         .then(res => {
-            console.log(res.data.Search)
+            // console.log(res.data)
             setMovies(res.data.Search)
         })
     }
@@ -32,7 +34,7 @@ let SearchScreen = () => {
                     placeholder='Search...'
                     placeholderTextColor='white'
                 />
-                {movies ? movies.map(movie => <Text style={styles.text}>{movie.Title}</Text>) : null}
+                <ItemList movies={movies}/>
             </View>
         </TouchableWithoutFeedback>
     )
@@ -41,7 +43,7 @@ let SearchScreen = () => {
 const styles = StyleSheet.create({
     searchContainer: {
         flex: 1,
-        // justifyContent: 'center',
+        justifyContent: 'center',
         alignItems: 'center',
         paddingTop: 20,
         backgroundColor: '#272727',
@@ -62,3 +64,7 @@ const styles = StyleSheet.create({
 })
 
 export default SearchScreen
+
+
+
+// `http://www.omdbapi.com/?apikey=48ba5f31&t=${searchText}&plot=short&page=1`

@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import SearchScreen from './screens/SearchScreen'
+import ItemScreen from './screens/ItemScreen'
+
 
 const Stack = createStackNavigator()
 
@@ -12,6 +14,7 @@ let App = () => {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Search" component={SearchScreen} />
+          <Stack.Screen name="Item" component={ItemScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     );

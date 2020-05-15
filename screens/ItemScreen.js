@@ -10,24 +10,26 @@ let ItemScreen = ({selectedMovie, showLoader}) => {
                 <ActivityIndicator size="large" color="#fff" />
             </View>
                 :
-                <View style={styles.container}>
-                <Image source={{uri: selectedMovie.Poster}} style={styles.image} resizeMode='contain'/>
-                <View style={styles.grouped}>
-                    <Text style={{...styles.text, ...styles.title}}>{selectedMovie.Title}</Text>
-                    <Text style={{...styles.text, ...styles.small}}>({selectedMovie.Year})</Text>
-                </View>
-                <View style={styles.grouped}>
-                    <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Rated}</Text>
-                    <Text style={{...styles.text, ...styles.small}}>({selectedMovie.Runtime})</Text>
-                </View>
-                <View style={styles.grouped}>
-                    <Text style={{...styles.text, ...styles.small, ...styles.plot}}>{selectedMovie.Plot}</Text>
-                </View>
-                <View style={styles.grouped}>
-                    <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Ratings[0].Source}</Text>
-                    <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Ratings[0].Value}</Text>
-                </View>
-            </View>
+                <ScrollView style={styles.container}>
+                    <View style={styles.imageContainer}>
+                        <Image source={{uri: selectedMovie.Poster}} style={styles.image} resizeMode='contain'/>
+                    </View>
+                    <View style={styles.grouped}>
+                        <Text style={{...styles.text, ...styles.title}}>{selectedMovie.Title}</Text>
+                        <Text style={{...styles.text, ...styles.small}}>({selectedMovie.Year})</Text>
+                    </View>
+                    <View style={styles.grouped}>
+                        <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Rated}</Text>
+                        <Text style={{...styles.text, ...styles.small}}>({selectedMovie.Runtime})</Text>
+                    </View>
+                    <View style={styles.grouped}>
+                        <Text style={{...styles.text, ...styles.small, ...styles.plot}}>{selectedMovie.Plot}</Text>
+                    </View>
+                    <View style={styles.grouped}>
+                        <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Ratings[0].Source}</Text>
+                        <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Ratings[0].Value}</Text>
+                    </View>
+                </ScrollView>
     )
 }
 
@@ -59,8 +61,14 @@ const styles = StyleSheet.create({
         marginTop: 5,
         marginLeft: 8,
     },
+    imageContainer:{
+        width: '100%',
+        height: 400
+    },
     image:{
-        flexGrow: .5,
+        flex: 1,
+        width: undefined,
+        height: undefined
     },
     plot: {
         fontStyle: 'italic'

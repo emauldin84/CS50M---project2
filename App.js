@@ -13,13 +13,14 @@ let App = () => {
     return (
       <NavigationContainer>
         <Tab.Navigator
+          initialRouteName='Search'
           tabBarOptions={{
             activeTintColor: '#fff',
             inactiveTintColor: '#666',
-            tabStyle: {
+            style:{
               backgroundColor: '#333',
-              flex: 1,
-              },
+              paddingTop: 5
+            }
           }}
         >
           <Tab.Screen 
@@ -37,7 +38,7 @@ let App = () => {
             component={SettingsScreen} 
             options={{
               tabBarLabel: 'Settings',
-              tabBarIcon: ({ color, size }) => (
+              tabBarIcon: ({ color, size}) => (
                 <Ionicons name='ios-settings' size={size} color={color} />
               )
             }}
@@ -53,6 +54,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#272727',
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'red'
   },
 });
 

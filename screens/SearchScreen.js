@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { View, TextInput, Text, StyleSheet, TouchableWithoutFeedback, Keyboard   } from 'react-native'
-import Constants from 'expo-constants';
 
 import ItemList from '../components/ItemList'
 
@@ -31,7 +30,7 @@ let SearchScreen = (props) => {
                     {searchText.length > 0 ? <Text style={{...styles.clear, ...styles.text}} onPress={handleClearText}>clear</Text> : null}
 
                 </View>
-                <ItemList movies={props.movies} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} setSearchText={setSearchText} setShowLoader={props.setShowLoader}/>
+                <ItemList movies={props.movies} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} setSearchText={setSearchText} setShowLoader={props.setShowLoader} longPlotEnabled={props.longPlotEnabled}/>
             </View>
         </TouchableWithoutFeedback>
     )
@@ -44,7 +43,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingTop: 20,
         backgroundColor: '#272727',
-        borderWidth: 1,
     },
     searchContainer: {
         flexDirection: 'row',

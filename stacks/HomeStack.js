@@ -10,7 +10,7 @@ import ItemScreen from '../screens/ItemScreen'
 
 const Stack = createStackNavigator()
 
-let HomeStack = () => {
+let HomeStack = ({longPlotEnabled}) => {
     const [movies, setMovies] = useState([])
     const [selectedMovie, setSelectedMovie] = useState({})
     const [showLoader, setShowLoader] = useState(false)
@@ -49,7 +49,9 @@ let HomeStack = () => {
                     setSelectedMovie={setSelectedMovie} 
                     handleMovieSearch={handleMovieSearch} 
                     movies={movies} 
-                    setShowLoader={setShowLoader}/>
+                    setShowLoader={setShowLoader}
+                    longPlotEnabled={longPlotEnabled}
+                    />
                     }
                 </Stack.Screen>
                 <Stack.Screen name="Item"

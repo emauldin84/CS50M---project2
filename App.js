@@ -10,6 +10,8 @@ import SettingsScreen from './screens/SettingsScreen'
 const Tab = createBottomTabNavigator();
 
 let App = () => {
+  const [longPlotEnabled, setLongPlotEnabled] = useState(false);
+
     return (
       <NavigationContainer>
         <Tab.Navigator
@@ -25,25 +27,28 @@ let App = () => {
           }}
         >
           <Tab.Screen 
-            name="Home" 
-            component={HomeStack} 
+            name="Home"  
             options={{
               tabBarLabel: 'Search',
               tabBarIcon: ({ color, size }) => (
                 <Ionicons name='ios-home' size={size} color={color} />
               )
             }}
-          />
+          >
+            {props => <HomeStack {...props} longPlotEnabled={longPlotEnabled}/>}
+          </Tab.Screen>
           <Tab.Screen 
             name="Settings" 
-            component={SettingsScreen} 
+            // component={SettingsScreen} 
             options={{
               tabBarLabel: 'Settings',
               tabBarIcon: ({ color, size}) => (
                 <Ionicons name='ios-settings' size={size} color={color} />
               )
             }}
-          />
+          > 
+          {props => <SettingsScreen {...props} longPlotEnabled={longPlotEnabled} setLongPlotEnabled={setLongPlotEnabled}/>}
+          </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>
     );

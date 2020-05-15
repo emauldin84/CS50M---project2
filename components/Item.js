@@ -4,12 +4,13 @@ import axios from 'axios'
 
 
 
-let Item = ({itemDetails, setSelectedMovie, navigation, setSearchText, setShowLoader, setMovies}) => {
+let Item = ({itemDetails, setSelectedMovie, navigation, setShowLoader, longPlotEnabled}) => {
+    const plotLength = longPlotEnabled ? 'full' : 'short'
     console.log(itemDetails)
     const handleMovieSelect = () => {
         setShowLoader(true)
         navigation.navigate('Item')
-        axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&i=${itemDetails.imdbID}&plot=short&page=1`)
+        axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&i=${itemDetails.imdbID}&plot=${plotLength}&page=1`)
         .then(res => {
             setSelectedMovie(res.data)
         })

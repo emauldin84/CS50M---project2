@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -14,6 +14,7 @@ let App = () => {
 
     return (
       <NavigationContainer>
+        <StatusBar barStyle='light-content'/>
         <Tab.Navigator
           initialRouteName='Search'
           tabBarOptions={{

@@ -11,23 +11,25 @@ let ItemScreen = ({selectedMovie, showLoader}) => {
             </View>
                 :
                 <ScrollView style={styles.container}>
-                    <View style={styles.imageContainer}>
-                        <Image source={{uri: selectedMovie.Poster}} style={styles.image} resizeMode='contain'/>
-                    </View>
-                    <View style={styles.grouped}>
-                        <Text style={{...styles.text, ...styles.title}}>{selectedMovie.Title}</Text>
-                        <Text style={{...styles.text, ...styles.small}}>({selectedMovie.Year})</Text>
-                    </View>
-                    <View style={styles.grouped}>
-                        <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Rated}</Text>
-                        <Text style={{...styles.text, ...styles.small}}>({selectedMovie.Runtime})</Text>
-                    </View>
-                    <View style={styles.grouped}>
-                        <Text style={{...styles.text, ...styles.small, ...styles.plot}}>{selectedMovie.Plot}</Text>
-                    </View>
-                    <View style={styles.grouped}>
-                        <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Ratings[0].Source}</Text>
-                        <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Ratings[0].Value}</Text>
+                    <View style={{paddingBottom: 20}}>
+                        <View style={styles.imageContainer}>
+                            <Image source={{uri: selectedMovie.Poster}} style={styles.image} resizeMode='contain'/>
+                        </View>
+                        <View style={styles.grouped}>
+                            <Text style={{...styles.text, ...styles.title}}>{selectedMovie.Title}</Text>
+                            <Text style={{...styles.text, ...styles.small}}>({selectedMovie.Year})</Text>
+                        </View>
+                        <View style={styles.grouped}>
+                            <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Rated}</Text>
+                            <Text style={{...styles.text, ...styles.small}}>({selectedMovie.Runtime})</Text>
+                        </View>
+                        <View style={styles.grouped}>
+                            <Text style={{...styles.text, ...styles.small, ...styles.plot}}>{selectedMovie.Plot}</Text>
+                        </View>
+                        <View style={styles.grouped}>
+                            <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Ratings[0].Source}</Text>
+                            <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Ratings[0].Value}</Text>
+                        </View>
                     </View>
                 </ScrollView>
     )
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#272727',
-        padding: 10
+        padding: 10,
     },
     loaderContainer: {
         justifyContent: 'center',
@@ -67,8 +69,6 @@ const styles = StyleSheet.create({
     },
     image:{
         flex: 1,
-        width: undefined,
-        height: undefined
     },
     plot: {
         fontStyle: 'italic'

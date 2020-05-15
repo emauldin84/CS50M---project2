@@ -19,8 +19,9 @@ let App = () => {
             inactiveTintColor: '#666',
             style:{
               backgroundColor: '#333',
-              paddingTop: 5
-            }
+              paddingTop: 5,
+              
+            },
           }}
         >
           <Tab.Screen 

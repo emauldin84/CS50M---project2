@@ -30,6 +30,12 @@ let HomeStack = () => {
                 options={{
                     headerStyle: {
                     backgroundColor: '#333',
+                    shadowOpacity: .3,
+                    shadowColor: '#000',
+                    shadowOffset: {
+                        height: 4,
+                    },
+                    shadowRadius: 2,
                     },
                     headerTintColor: '#fff',
                     headerTitleStyle: {
@@ -51,6 +57,12 @@ let HomeStack = () => {
                     title: selectedMovie.Title,
                     headerStyle: {
                         backgroundColor: '#333',
+                        shadowOpacity: .3,
+                        shadowColor: '#000',
+                        shadowOffset: {
+                            height: 4,
+                        },
+                        shadowRadius: 2,
                     },
                     headerTintColor: '#fff',
                     headerTitleStyle: {

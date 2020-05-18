@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, View, Text, StyleSheet, ScrollView, ActivityIndicator} from 'react-native'
 
 let ItemScreen = ({selectedMovie, showLoader}) => {
-    console.log(selectedMovie)
+    console.log('SELECTED MOVIE', selectedMovie)
 
     return(
             showLoader ? 

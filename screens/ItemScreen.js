@@ -2,8 +2,6 @@ import React from 'react'
 import { Image, View, Text, StyleSheet, ScrollView, ActivityIndicator} from 'react-native'
 
 let ItemScreen = ({selectedMovie, showLoader}) => {
-    console.log('SELECTED MOVIE', selectedMovie)
-
     return(
             showLoader ? 
             <View style={{...styles.container, ...styles.loaderContainer}}>
@@ -24,11 +22,11 @@ let ItemScreen = ({selectedMovie, showLoader}) => {
                             <Text style={{...styles.text, ...styles.small}}>({selectedMovie.Runtime})</Text>
                         </View>
                         <View style={styles.grouped}>
-                            <Text style={{...styles.text, ...styles.small, ...styles.plot}}>{selectedMovie.Plot}</Text>
-                        </View>
-                        <View style={styles.grouped}>
                             <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Ratings[0].Source}</Text>
                             <Text style={{...styles.text, ...styles.small}}>{selectedMovie.Ratings[0].Value}</Text>
+                        </View>
+                        <View style={styles.grouped}>
+                            <Text style={{...styles.text, ...styles.small, ...styles.plot}}>{selectedMovie.Plot}</Text>
                         </View>
                     </View>
                 </ScrollView>

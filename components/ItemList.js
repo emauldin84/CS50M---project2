@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, SafeAreaView, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native'
+import { FlatList, SafeAreaView, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 
 import Item from './Item'
 

@@ -6,7 +6,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import HomeStack from './stacks/HomeStack'
 import SettingsStack from './stacks/SettingsStack'
-import SettingsScreen from './screens/SettingsScreen'
 
 const Tab = createBottomTabNavigator();
 
@@ -41,7 +40,6 @@ let App = () => {
           </Tab.Screen>
           <Tab.Screen 
             name="Settings" 
-            // component={SettingsScreen} 
             options={{
               tabBarLabel: 'Settings',
               tabBarIcon: ({ color, size}) => (

@@ -5,12 +5,7 @@ import Constants from 'expo-constants';
 
 
 let SettingsScreen = (props) => {
-    console.log('PROPS',props)
     const toggleSwitch = () => props.setLongPlotEnabled(previousState => !previousState)
-
-    const handleGoBack = () => {
-        props.navigation.goBack()
-    }
     
     return(
         <View style={styles.container}>
@@ -38,36 +33,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#272727',
         justifyContent: 'center',
     },
-    // header:{
-    //     flexDirection: 'row',
-    //     paddingTop: Constants.statusBarHeight,
-    //     backgroundColor: '#333',
-    //     height: 88,
-    //     width: '100%',
-    //     alignItems: 'center',
-    //     shadowOpacity: .3,
-    //     shadowColor: '#000',
-    //     shadowOffset: {
-    //         height: 4,
-    //     },
-    //     shadowRadius: 2,
-    // },
-    // headerTitleText:{
-    //     fontSize: 16,
-    //     fontWeight: 'bold',
-    //     color: '#fff',
-    //     marginTop: 12,
-    //     // marginLeft: 'auto',
-    //     // marginRight: 'auto',
-    //     textAlign: 'center'
-    // },
-    // headerBackText: {
-    //     fontSize: 14,
-    //     color: '#fff',
-    //     marginTop: 12,
-    //     // marginLeft: 'auto',
-    //     // marginRight: '40%'
-    // },
     controlsContainer:{
         flex: 1,
     },

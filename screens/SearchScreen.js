@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, TextInput, Text, StyleSheet, TouchableWithoutFeedback, Keyboard   } from 'react-native'
+import { View, TextInput, Text, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native'
 
 import ItemList from '../components/ItemList'
 

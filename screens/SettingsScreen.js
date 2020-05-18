@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { StyleSheet, Switch, Text, View } from 'react-native';
 import Constants from 'expo-constants';
 

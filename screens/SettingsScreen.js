@@ -14,10 +14,6 @@ let SettingsScreen = (props) => {
     
     return(
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.headerBackText}onPress={handleGoBack}>Back</Text>
-                <Text style={styles.headerTitleText}>Settings</Text>
-            </View>
             <View style={styles.controlsContainer}>
                 <View style={styles.plotContainer}>
                     <Text style={styles.text}>Long Plot</Text>
@@ -42,36 +38,36 @@ const styles = StyleSheet.create({
         backgroundColor: '#272727',
         justifyContent: 'center',
     },
-    header:{
-        flexDirection: 'row',
-        paddingTop: Constants.statusBarHeight,
-        backgroundColor: '#333',
-        height: 88,
-        width: '100%',
-        alignItems: 'center',
-        shadowOpacity: .3,
-        shadowColor: '#000',
-        shadowOffset: {
-            height: 4,
-        },
-        shadowRadius: 2,
-    },
-    headerTitleText:{
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#fff',
-        marginTop: 12,
-        // marginLeft: 'auto',
-        // marginRight: 'auto',
-        textAlign: 'center'
-    },
-    headerBackText: {
-        fontSize: 14,
-        color: '#fff',
-        marginTop: 12,
-        // marginLeft: 'auto',
-        // marginRight: '40%'
-    },
+    // header:{
+    //     flexDirection: 'row',
+    //     paddingTop: Constants.statusBarHeight,
+    //     backgroundColor: '#333',
+    //     height: 88,
+    //     width: '100%',
+    //     alignItems: 'center',
+    //     shadowOpacity: .3,
+    //     shadowColor: '#000',
+    //     shadowOffset: {
+    //         height: 4,
+    //     },
+    //     shadowRadius: 2,
+    // },
+    // headerTitleText:{
+    //     fontSize: 16,
+    //     fontWeight: 'bold',
+    //     color: '#fff',
+    //     marginTop: 12,
+    //     // marginLeft: 'auto',
+    //     // marginRight: 'auto',
+    //     textAlign: 'center'
+    // },
+    // headerBackText: {
+    //     fontSize: 14,
+    //     color: '#fff',
+    //     marginTop: 12,
+    //     // marginLeft: 'auto',
+    //     // marginRight: '40%'
+    // },
     controlsContainer:{
         flex: 1,
     },

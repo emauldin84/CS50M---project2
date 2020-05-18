@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import HomeStack from './stacks/HomeStack'
+import SettingsStack from './stacks/SettingsStack'
 import SettingsScreen from './screens/SettingsScreen'
 
 const Tab = createBottomTabNavigator();
@@ -48,7 +49,7 @@ let App = () => {
               )
             }}
           > 
-          {props => <SettingsScreen {...props} longPlotEnabled={longPlotEnabled} setLongPlotEnabled={setLongPlotEnabled}/>}
+          {props => <SettingsStack {...props} longPlotEnabled={longPlotEnabled} setLongPlotEnabled={setLongPlotEnabled}/>}
           </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>

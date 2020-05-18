@@ -4,18 +4,19 @@ import axios from 'axios'
 
 
 
-let Item = ({itemDetails, setSelectedMovie, navigation, setShowLoader, longPlotEnabled}) => {
+let Item = ({itemDetails, setSelectedMovie, selectedMovie, navigation, setShowLoader, longPlotEnabled}) => {
     const plotLength = longPlotEnabled ? 'full' : 'short'
-    console.log(itemDetails)
 
     useEffect (() => {
-        axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&i=${itemDetails.imdbID}&plot=${plotLength}`)
-        .then(res => {
-            setSelectedMovie(res.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+        if(selectedMovie.imdbID === itemDetails.imdbID){
+            axios.get(`http://www.omdbapi.com/?apikey=48ba5f31&i=${itemDetails.imdbID}&plot=${plotLength}`)
+            .then(res => {
+                setSelectedMovie(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
     }, [longPlotEnabled])
 
     const handleMovieSelect = () => {

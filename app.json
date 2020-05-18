@@ -15,6 +15,7 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
+      "bundleIdentifier": "ios.CS50M.project2.SearchOMDB",
       "supportsTablet": true
     }
   }

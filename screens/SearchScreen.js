@@ -30,7 +30,7 @@ let SearchScreen = (props) => {
                     {searchText.length > 0 ? <Text style={{...styles.clear, ...styles.text}} onPress={handleClearText}>clear</Text> : null}
 
                 </View>
-                <ItemList movies={props.movies} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} setSearchText={setSearchText} setShowLoader={props.setShowLoader} longPlotEnabled={props.longPlotEnabled}/>
+                <ItemList movies={props.movies} setSelectedMovie={props.setSelectedMovie} selectedMovie={props.selectedMovie} navigation={props.navigation} setSearchText={setSearchText} setShowLoader={props.setShowLoader} longPlotEnabled={props.longPlotEnabled}/>
             </View>
         </TouchableWithoutFeedback>
     )

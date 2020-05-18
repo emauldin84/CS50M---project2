@@ -46,7 +46,8 @@ let HomeStack = ({longPlotEnabled}) => {
                     {props => <SearchScreen 
                     {...props} 
                     setMovies={setMovies}
-                    setSelectedMovie={setSelectedMovie} 
+                    setSelectedMovie={setSelectedMovie}
+                    selectedMovie={selectedMovie}
                     handleMovieSearch={handleMovieSearch} 
                     movies={movies} 
                     setShowLoader={setShowLoader}

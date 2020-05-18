@@ -1,6 +1,5 @@
 import React from 'react'
 import { FlatList, SafeAreaView, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native'
-import Constants from 'expo-constants';
 
 import Item from './Item'
 
@@ -12,7 +11,15 @@ let ItemList = (props) => {
             <SafeAreaView style={styles.container}>
                 <FlatList
                     data={props.movies}
-                    renderItem={({item}) => <Item itemDetails={item} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} setSearchText={props.setSearchText} setShowLoader={props.setShowLoader} longPlotEnabled={props.longPlotEnabled}/>}
+                    renderItem={({item}) => <Item 
+                                                itemDetails={item} 
+                                                setSelectedMovie={props.setSelectedMovie}
+                                                selectedMovie={props.selectedMovie}
+                                                navigation={props.navigation} 
+                                                setSearchText={props.setSearchText} 
+                                                setShowLoader={props.setShowLoader} 
+                                                longPlotEnabled={props.longPlotEnabled}
+                                            />}
                     keyExtractor={item => item.imdbID}
                 />
 

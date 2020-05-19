@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, Switch, Text, View } from 'react-native';
-import Constants from 'expo-constants';
 
+import SettingsContext from '../contexts/SettingsContext'
 
-
-let SettingsScreen = (props) => {
-    const toggleSwitch = () => props.setLongPlotEnabled(previousState => !previousState)
+let SettingsScreen = () => {
+    const { longPlotEnabled, setLongPlotEnabled} = useContext(SettingsContext)
+    const toggleSwitch = () => setLongPlotEnabled(previousState => !previousState)
     
     return(
         <View style={styles.container}>
@@ -14,15 +14,13 @@ let SettingsScreen = (props) => {
                     <Text style={styles.text}>Long Plot</Text>
                     <Switch
                         trackColor={{ false: "#fff", true: "#272727" }}
-                        thumbColor={props.longPlotEnabled ? "#fff" : "#272727"}
+                        thumbColor={longPlotEnabled ? "#fff" : "#272727"}
                         ios_backgroundColor="#3e3e3e"
                         onValueChange={toggleSwitch}
-                        value={props.longPlotEnabled}
+                        value={longPlotEnabled}
                     />
                 </View>
-
             </View>
-
         </View>
     )
 }

@@ -7,50 +7,54 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeStack from './stacks/HomeStack'
 import SettingsStack from './stacks/SettingsStack'
 
+import SettingsContext from './contexts/SettingsContext'
+
 const Tab = createBottomTabNavigator();
 
 let App = () => {
   const [longPlotEnabled, setLongPlotEnabled] = useState(false);
 
     return (
-      <NavigationContainer>
-        <StatusBar barStyle='light-content'/>
-        <Tab.Navigator
-          initialRouteName='Search'
-          tabBarOptions={{
-            activeTintColor: '#fff',
-            inactiveTintColor: '#666',
-            style:{
-              backgroundColor: '#333',
-              paddingTop: 5,
-              
-            },
-          }}
-        >
-          <Tab.Screen 
-            name="Home"  
-            options={{
-              tabBarLabel: 'Search',
-              tabBarIcon: ({ color, size }) => (
-                <Ionicons name='ios-home' size={size} color={color} />
-              )
+      <SettingsContext.Provider value={{longPlotEnabled, setLongPlotEnabled}}>
+        <NavigationContainer>
+          <StatusBar barStyle='light-content'/>
+          <Tab.Navigator
+            initialRouteName='Search'
+            tabBarOptions={{
+              activeTintColor: '#fff',
+              inactiveTintColor: '#666',
+              style:{
+                backgroundColor: '#333',
+                paddingTop: 5,
+                
+              },
             }}
           >
-            {props => <HomeStack {...props} longPlotEnabled={longPlotEnabled}/>}
-          </Tab.Screen>
-          <Tab.Screen 
-            name="Settings" 
-            options={{
-              tabBarLabel: 'Settings',
-              tabBarIcon: ({ color, size}) => (
-                <Ionicons name='ios-settings' size={size} color={color} />
-              )
-            }}
-          > 
-          {props => <SettingsStack {...props} longPlotEnabled={longPlotEnabled} setLongPlotEnabled={setLongPlotEnabled}/>}
-          </Tab.Screen>
-        </Tab.Navigator>
-      </NavigationContainer>
+            <Tab.Screen 
+              name="Home"
+              component={HomeStack}  
+              options={{
+                tabBarLabel: 'Search',
+                tabBarIcon: ({ color, size }) => (
+                  <Ionicons name='ios-home' size={size} color={color} />
+                )
+              }}
+            >
+            </Tab.Screen>
+            <Tab.Screen 
+              name="Settings" 
+              component={SettingsStack}
+              options={{
+                tabBarLabel: 'Settings',
+                tabBarIcon: ({ color, size}) => (
+                  <Ionicons name='ios-settings' size={size} color={color} />
+                )
+              }}
+            > 
+            </Tab.Screen>
+          </Tab.Navigator>
+        </NavigationContainer>
+      </SettingsContext.Provider>
     );
   }
 

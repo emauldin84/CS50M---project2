@@ -3,6 +3,8 @@ import { StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack'
 import axios from 'axios'
 
+import MovieContext from '../contexts/MovieContext'
+
 import SearchScreen from '../screens/SearchScreen'
 import ItemScreen from '../screens/ItemScreen'
 
@@ -10,7 +12,7 @@ import ItemScreen from '../screens/ItemScreen'
 
 const Stack = createStackNavigator()
 
-let HomeStack = ({longPlotEnabled}) => {
+let HomeStack = ({navigation}) => {
     const [movies, setMovies] = useState([])
     const [selectedMovie, setSelectedMovie] = useState({})
     const [showLoader, setShowLoader] = useState(false)
@@ -25,57 +27,63 @@ let HomeStack = ({longPlotEnabled}) => {
         })
     }
         return (
-            <Stack.Navigator initialRouteName='Search'>
-                <Stack.Screen name="Search"
-                options={{
-                    headerStyle: {
-                    backgroundColor: '#333',
-                    shadowOpacity: .3,
-                    shadowColor: '#000',
-                    shadowOffset: {
-                        height: 4,
-                    },
-                    shadowRadius: 2,
-                    },
-                    headerTintColor: '#fff',
-                    headerTitleStyle: {
-                    fontWeight: 'bold',
-                    }
-                    }}
-                >
-                    {props => <SearchScreen 
-                    {...props} 
-                    setMovies={setMovies}
-                    setSelectedMovie={setSelectedMovie}
-                    selectedMovie={selectedMovie}
-                    handleMovieSearch={handleMovieSearch} 
-                    movies={movies} 
-                    setShowLoader={setShowLoader}
-                    longPlotEnabled={longPlotEnabled}
-                    />
-                    }
-                </Stack.Screen>
-                <Stack.Screen name="Item"
-                    options={{
-                    title: selectedMovie.Title,
-                    headerStyle: {
-                        backgroundColor: '#333',
-                        shadowOpacity: .3,
-                        shadowColor: '#000',
-                        shadowOffset: {
-                            height: 4,
-                        },
-                        shadowRadius: 2,
-                    },
-                    headerTintColor: '#fff',
-                    headerTitleStyle: {
-                        fontWeight: 'bold',
-                    }
-                    }}
+            <MovieContext.Provider 
+                value={{
+                    movies,
+                    setMovies,
+                    selectedMovie,
+                    setSelectedMovie,
+                    showLoader,
+                    setShowLoader,
+                    navigation,
+                    handleMovieSearch
+                }} 
+            >
+                
+                <Stack.Navigator initialRouteName='Search'>
+                    <Stack.Screen 
+                        name="Search"
+                        component={SearchScreen}
+                        options={{
+                            headerStyle: {
+                            backgroundColor: '#333',
+                            shadowOpacity: .3,
+                            shadowColor: '#000',
+                            shadowOffset: {
+                                height: 4,
+                            },
+                            shadowRadius: 2,
+                            },
+                            headerTintColor: '#fff',
+                            headerTitleStyle: {
+                            fontWeight: 'bold',
+                            }
+                        }}
                     >
-                    {props => <ItemScreen {...props} selectedMovie={selectedMovie} showLoader={showLoader}/>}
-                </Stack.Screen>
-            </Stack.Navigator>
+                    </Stack.Screen>
+                    <Stack.Screen name="Item"
+                        options={{
+                        title: selectedMovie.Title,
+                        headerStyle: {
+                            backgroundColor: '#333',
+                            shadowOpacity: .3,
+                            shadowColor: '#000',
+                            shadowOffset: {
+                                height: 4,
+                            },
+                            shadowRadius: 2,
+                        },
+                        headerTintColor: '#fff',
+                        headerTitleStyle: {
+                            fontWeight: 'bold',
+                        }
+                        }}
+                        component={ItemScreen}
+                        >
+                    </Stack.Screen>
+                </Stack.Navigator>
+
+            </MovieContext.Provider>
         );
     }
 

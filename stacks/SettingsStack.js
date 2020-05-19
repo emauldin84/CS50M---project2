@@ -6,39 +6,35 @@ import SettingsScreen from '../screens/SettingsScreen'
 
 const Stack = createStackNavigator()
 
-let SettingsStack = ({longPlotEnabled, setLongPlotEnabled, navigation}) => {
+let SettingsStack = ({navigation}) => {
         return (
             <Stack.Navigator initialRouteName='Settings'>
-                <Stack.Screen name="Settings"
-                options={{
-                    headerStyle: {
-                        backgroundColor: '#333',
-                        shadowOpacity: .3,
-                        shadowColor: '#000',
-                        shadowOffset: {
-                            height: 4,
+                <Stack.Screen 
+                    name="Settings"
+                    component={SettingsScreen}
+                    options={{
+                        headerStyle: {
+                            backgroundColor: '#333',
+                            shadowOpacity: .3,
+                            shadowColor: '#000',
+                            shadowOffset: {
+                                height: 4,
+                            },
+                            shadowRadius: 2,
                         },
-                        shadowRadius: 2,
-                    },
-                    headerTintColor: '#fff',
-                    headerTitleStyle: {
-                        fontWeight: 'bold',
-                    },
-                    headerLeft: () => (
-                        <Button
-                            onPress={() => navigation.goBack()}
-                            title="Back"
-                            color="#fff"
-                        />
-                    )
+                        headerTintColor: '#fff',
+                        headerTitleStyle: {
+                            fontWeight: 'bold',
+                        },
+                        headerLeft: () => (
+                            <Button
+                                onPress={() => navigation.goBack()}
+                                title="Back"
+                                color="#fff"
+                            />
+                        )
                     }}
                 >
-                    {props => <SettingsScreen 
-                    {...props} 
-                    longPlotEnabled={longPlotEnabled} 
-                    setLongPlotEnabled={setLongPlotEnabled}
-                    />
-                    }
                 </Stack.Screen>
             </Stack.Navigator>
         );

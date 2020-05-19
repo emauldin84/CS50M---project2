@@ -1,24 +1,20 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { FlatList, SafeAreaView, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 
+import MovieContext from '../contexts/MovieContext'
 import Item from './Item'
 
 
-let ItemList = (props) => {
+let ItemList = () => {
+    const {movies} = useContext(MovieContext)
 
     return(
         <TouchableWithoutFeedback>
             <SafeAreaView style={styles.container}>
                 <FlatList
-                    data={props.movies}
+                    data={movies}
                     renderItem={({item}) => <Item 
-                                                itemDetails={item} 
-                                                setSelectedMovie={props.setSelectedMovie}
-                                                selectedMovie={props.selectedMovie}
-                                                navigation={props.navigation} 
-                                                setSearchText={props.setSearchText} 
-                                                setShowLoader={props.setShowLoader} 
-                                                longPlotEnabled={props.longPlotEnabled}
+                                                itemDetails={item}  
                                             />}
                     keyExtractor={item => item.imdbID}
                 />

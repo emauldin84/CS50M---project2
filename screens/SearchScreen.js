@@ -1,19 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { View, TextInput, Text, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native'
+
+import MovieContext from '../contexts/MovieContext'
 
 import ItemList from '../components/ItemList'
 
-let SearchScreen = (props) => {
+let SearchScreen = () => {
     const [searchText, setSearchText] = useState('')
+    const {setMovies, handleMovieSearch} = useContext(MovieContext)
 
     let handleTextChange = (text) => {
         setSearchText(text)
-        props.handleMovieSearch(text)
+        handleMovieSearch(text)
     }
 
     let handleClearText = () => {
         setSearchText('')
-        props.setMovies([])
+        setMovies([])
     }
 
     return(
@@ -30,7 +33,7 @@ let SearchScreen = (props) => {
                     {searchText.length > 0 ? <Text style={{...styles.clear, ...styles.text}} onPress={handleClearText}>clear</Text> : null}
 
                 </View>
-                <ItemList movies={props.movies} setSelectedMovie={props.setSelectedMovie} selectedMovie={props.selectedMovie} navigation={props.navigation} setSearchText={setSearchText} setShowLoader={props.setShowLoader} longPlotEnabled={props.longPlotEnabled}/>
+                <ItemList />
             </View>
         </TouchableWithoutFeedback>
     )

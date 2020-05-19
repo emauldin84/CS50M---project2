@@ -1,10 +1,15 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useContext} from 'react'
 import { Image ,StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import axios from 'axios'
 
+import MovieContext from '../contexts/MovieContext'
+import SettingsContext from '../contexts/SettingsContext'
 
 
-let Item = ({itemDetails, setSelectedMovie, selectedMovie, navigation, setShowLoader, longPlotEnabled}) => {
+let Item = ({itemDetails}) => {
+    const {selectedMovie, setSelectedMovie, setShowLoader, navigation} = useContext(MovieContext)
+    const {longPlotEnabled} = useContext(SettingsContext)
+    
     const plotLength = longPlotEnabled ? 'full' : 'short'
 
     useEffect (() => {

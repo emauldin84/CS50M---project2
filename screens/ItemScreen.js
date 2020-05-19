@@ -1,7 +1,10 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Image, View, Text, StyleSheet, ScrollView, ActivityIndicator} from 'react-native'
+import MovieContext from '../contexts/MovieContext'
 
-let ItemScreen = ({selectedMovie, showLoader}) => {
+let ItemScreen = () => {
+    const {selectedMovie, showLoader} = useContext(MovieContext)
+
     return(
             showLoader ? 
             <View style={{...styles.container, ...styles.loaderContainer}}>
